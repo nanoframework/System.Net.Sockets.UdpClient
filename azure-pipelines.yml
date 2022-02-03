@@ -34,7 +34,7 @@ steps:
 # build steps only
 - template: azure-pipelines-templates/class-lib-build.yml@templates  
   parameters:
-    sonarCloudProject: 'nanoframework_nanoframework.System.Net.Sockets.UdpClient'
+    sonarCloudProject: 'nanoframework_System.Net.Sockets.UdpClient'
 
 # step from template @ nf-tools repo
 # report error
