@@ -27,7 +27,7 @@ namespace System.Net.Sockets
         /// </summary>
         /// <param name="multicastAddress">Multicast <see cref="IPAddress"/></param>
         /// <param name="localAddress">Local <see cref="IPAddress"/> associated to multicast group</param>
-        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentNullException"><paramref name="localAddress"/> is null or <paramref name="multicastAddress"/> is null</exception>
         public MulticastOption(IPAddress multicastAddress, IPAddress localAddress)
         {
             MultiCastAddress = multicastAddress ?? throw new ArgumentNullException(nameof(multicastAddress));
@@ -53,11 +53,13 @@ namespace System.Net.Sockets
             byte[] optionValue = new byte[8];
             byte[] mcBytes = MultiCastAddress.GetAddressBytes();
             byte[] localBytes = LocalAddress.GetAddressBytes();
+            
             for (int i = 0; i < 4; i++)
             {
                 optionValue[i] = mcBytes[i];
                 optionValue[i + 4] = localBytes[i];
             }
+
             return optionValue;
         }
     }

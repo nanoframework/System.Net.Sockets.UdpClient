@@ -20,6 +20,7 @@ namespace System.Net.Sockets
     public class UdpClient : IDisposable
     {
         private readonly Socket _clientSocket = null!; // initialized by helper called from ctor
+        private bool _disposed = false;
         private const AddressFamily _family = AddressFamily.InterNetwork;
         private const string _IPv4OnlySupport = "UDPClient is only supported on IPv4";
 
@@ -44,7 +45,9 @@ namespace System.Net.Sockets
         {
             // Validate input parameters.
             if (port < 0 || port > ushort.MaxValue)
+            {
                 throw new ArgumentOutOfRangeException(nameof(port));
+            }
 
             IPEndPoint localEP;
             localEP = new IPEndPoint(IPAddress.Any, port);
@@ -64,10 +67,14 @@ namespace System.Net.Sockets
         {
             // Validate input parameters.
             if (localEP is null)
+            {
                 throw new ArgumentNullException(nameof(localEP));
+            }
 
             if (localEP.AddressFamily != AddressFamily.InterNetwork)
+            {
                 throw new ArgumentException(_IPv4OnlySupport);
+            }
 
             _clientSocket = new Socket(_family, SocketType.Dgram, ProtocolType.Udp);
             _clientSocket.Bind(localEP);
@@ -101,7 +108,10 @@ namespace System.Net.Sockets
             set
             {
                 if (value < 0 || value > 255)
+                {
                     throw new ArgumentOutOfRangeException(nameof(value));
+                }
+
                 _clientSocket.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.IpTimeToLive, value);
             }
         }
@@ -415,10 +425,10 @@ namespace System.Net.Sockets
         /// </summary>
         public void Close() => Dispose();
 
-        private bool _disposed = false;
         /// <inheritdoc/>
         public void Dispose()
         {
+            Active = false;
             _disposed = true;
             ((IDisposable)_clientSocket)?.Dispose();
         }
