@@ -194,7 +194,7 @@ namespace System.Net.Sockets
         {
             ThrowIfDisposed();
 
-            Client.Connect(endPoint);
+            Client.Connect(endPoint ?? throw new ArgumentNullException());
             Active = true;
         }
 
@@ -243,7 +243,7 @@ namespace System.Net.Sockets
 
             if (buffer.Length < offset + size)
             {
-                throw new ArgumentException("Buffer is too short for offset and size");
+                throw new ArgumentException();
             }
 
             EndPoint tempRemoteEP = new IPEndPoint(0, 0);
@@ -263,7 +263,8 @@ namespace System.Net.Sockets
         /// <returns>Number of byte sent</returns>
         /// <exception cref="ArgumentNullException"><paramref name="dgram"/> is null</exception>
         /// <exception cref="ArgumentException"><paramref name="dgram"/> length is too short compared to <paramref name="offset"/> and <paramref name="size"/></exception>
-        /// <exception cref="InvalidOperationException">A remote <paramref name="endPoint"/> is specified but the <see cref="UdpClient"/> is already connected.</exception>
+        /// <exception cref="InvalidOperationException">A remote <paramref name="endPoint"/> is specified but the <see cref="UdpClient"/> is already connected. 
+        /// Or remote <paramref name="endPoint"/> is null but <see cref="UdpClient"/> is not connected.</exception>
         /// <exception cref="ObjectDisposedException"><see cref="UdpClient"/> is already disposed.</exception>
         /// <exception cref="SocketException">Error on the underlying socket.</exception>
         public int Send(byte[] dgram, int offset, int size, IPEndPoint endPoint)
@@ -277,7 +278,7 @@ namespace System.Net.Sockets
 
             if (dgram.Length < offset + size)
             {
-                throw new ArgumentException("Buffer is too short for offset and size");
+                throw new ArgumentException();
             }
 
             if (!Active) // not connected client
@@ -307,7 +308,8 @@ namespace System.Net.Sockets
         /// <param name="endPoint">Remote endpoint to send the datagram to. Must be <code>null</code> if the <see cref="UdpClient"/> is connected to a remote endpoint.</param>
         /// <returns>Number of byte sent</returns>
         /// <exception cref="ArgumentNullException"><paramref name="dgram"/> is null.</exception>
-        /// <exception cref="InvalidOperationException">A remote <paramref name="endPoint"/> is specified but the <see cref="UdpClient"/> is already connected.</exception>
+        /// <exception cref="InvalidOperationException">A remote <paramref name="endPoint"/> is specified but the <see cref="UdpClient"/> is already connected. 
+        /// Or remote <paramref name="endPoint"/> is null but <see cref="UdpClient"/> is not connected.</exception>
         /// <exception cref="ObjectDisposedException"><see cref="UdpClient"/> is already disposed.</exception>
         /// <exception cref="SocketException">Error on the underlying socket.</exception>
         public int Send(byte[] dgram, IPEndPoint endPoint) => Send(dgram, 0, dgram.Length, endPoint);
