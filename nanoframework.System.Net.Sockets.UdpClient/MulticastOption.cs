@@ -30,8 +30,8 @@ namespace System.Net.Sockets
         /// <exception cref="ArgumentNullException"><paramref name="localAddress"/> is null or <paramref name="multicastAddress"/> is null</exception>
         public MulticastOption(IPAddress multicastAddress, IPAddress localAddress)
         {
-            MultiCastAddress = multicastAddress ?? throw new ArgumentNullException(nameof(multicastAddress));
-            LocalAddress = localAddress ?? throw new ArgumentNullException(nameof(localAddress));
+            MultiCastAddress = multicastAddress ?? throw new ArgumentNullException();
+            LocalAddress = localAddress ?? throw new ArgumentNullException();
         }
 
         /// <summary>

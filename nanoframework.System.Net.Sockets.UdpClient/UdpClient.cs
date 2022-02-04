@@ -46,7 +46,7 @@ namespace System.Net.Sockets
             // Validate input parameters.
             if (port < 0 || port > ushort.MaxValue)
             {
-                throw new ArgumentOutOfRangeException(nameof(port));
+                throw new ArgumentOutOfRangeException();
             }
 
             IPEndPoint localEP;
@@ -68,7 +68,7 @@ namespace System.Net.Sockets
             // Validate input parameters.
             if (localEP is null)
             {
-                throw new ArgumentNullException(nameof(localEP));
+                throw new ArgumentNullException();
             }
 
             if (localEP.AddressFamily != AddressFamily.InterNetwork)
@@ -100,6 +100,7 @@ namespace System.Net.Sockets
         /// <summary>
         /// Time To Live (TTL) value of the IP packets sent through the <see cref="UdpClient"/>
         /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException">TTl must be a value between 0 and 255 </exception>
         /// <exception cref="ObjectDisposedException"><see cref="UdpClient"/> is already disposed.</exception>
         /// <exception cref="SocketException">Error on the underlying socket.</exception>
         public short Ttl
@@ -109,7 +110,7 @@ namespace System.Net.Sockets
             {
                 if (value < 0 || value > 255)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(value));
+                    throw new ArgumentOutOfRangeException();
                 }
 
                 _clientSocket.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.IpTimeToLive, value);
@@ -175,10 +176,10 @@ namespace System.Net.Sockets
 
             if (port < 0 || port > ushort.MaxValue)
             {
-                throw new ArgumentOutOfRangeException(nameof(port));
+                throw new ArgumentOutOfRangeException();
             }
 
-            IPEndPoint endPoint = new IPEndPoint(addr ?? throw new ArgumentNullException(nameof(addr)), port);
+            IPEndPoint endPoint = new IPEndPoint(addr ?? throw new ArgumentNullException(), port);
             Connect(endPoint);
         }
 
@@ -193,7 +194,7 @@ namespace System.Net.Sockets
         {
             ThrowIfDisposed();
 
-            Client.Connect(endPoint ?? throw new ArgumentNullException(nameof(endPoint)));
+            Client.Connect(endPoint);
             Active = true;
         }
 
@@ -221,6 +222,7 @@ namespace System.Net.Sockets
         /// <param name="size">Maximum size of the datagram to receive.</param>
         /// <param name="remoteEP">An <see cref="IPEndPoint"/> that represents the remote host from which the data was sent.</param>
         /// <returns>Length of the datagram received. Will be equal to the size of <paramref name="buffer"/> if the datagram size was equal or bigger than the <paramref name="buffer"/> size.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="buffer"/> is null</exception>
         /// <exception cref="ArgumentException"><paramref name="buffer"/> length is too short compared to <paramref name="offset"/> and <paramref name="size"/></exception>
         /// <exception cref="ObjectDisposedException"><see cref="UdpClient"/> is already disposed.</exception>
         /// <exception cref="SocketException">Error on the underlying socket.</exception>
@@ -234,9 +236,14 @@ namespace System.Net.Sockets
         {
             ThrowIfDisposed();
 
+            if (buffer is null)
+            {
+                throw new ArgumentNullException();
+            }
+
             if (buffer.Length < offset + size)
             {
-                throw new ArgumentException("Buffer is too short for offset and size", nameof(buffer));
+                throw new ArgumentException("Buffer is too short for offset and size");
             }
 
             EndPoint tempRemoteEP = new IPEndPoint(0, 0);
@@ -265,12 +272,12 @@ namespace System.Net.Sockets
 
             if (dgram is null)
             {
-                throw new ArgumentNullException(nameof(dgram));
+                throw new ArgumentNullException();
             }
 
             if (dgram.Length < offset + size)
             {
-                throw new ArgumentException("Buffer is too short for offset and size", nameof(dgram));
+                throw new ArgumentException("Buffer is too short for offset and size");
             }
 
             if (!Active) // not connected client
@@ -344,8 +351,8 @@ namespace System.Net.Sockets
         /// </summary>
         /// <param name="multicastAddr"><see cref="IPAddress"/> of the multicast group to join.</param>
         /// <param name="localAddress">Local <see cref="IPAddress"/> for joining the group.</param>
-        /// <exception cref="ArgumentNullException">One of the arguments is null.</exception>
-        /// <exception cref="ArgumentException">One of the argument isn't an IPv4 address.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="localAddress"/> or <paramref name="multicastAddr"/> is null.</exception>
+        /// <exception cref="ArgumentException"><paramref name="localAddress"/> or <paramref name="multicastAddr"/> isn't an IPv4 address.</exception>
         /// <exception cref="SocketException">Error on the underlying socket.</exception>
         public void JoinMulticastGroup(IPAddress multicastAddr, IPAddress localAddress)
         {
@@ -354,12 +361,12 @@ namespace System.Net.Sockets
             // Validate input parameters.
             if (multicastAddr is null)
             {
-                throw new ArgumentNullException(nameof(multicastAddr));
+                throw new ArgumentNullException();
             }
 
             if (localAddress is null)
             {
-                throw new ArgumentNullException(nameof(localAddress));
+                throw new ArgumentNullException();
             }
 
             if (multicastAddr.AddressFamily != AddressFamily.InterNetwork || localAddress.AddressFamily != AddressFamily.InterNetwork)
@@ -384,12 +391,12 @@ namespace System.Net.Sockets
 
             if (multicastAddr is null)
             {
-                throw new ArgumentNullException(nameof(multicastAddr));
+                throw new ArgumentNullException();
             }
 
             if (multicastAddr.AddressFamily != _family)
             {
-                throw new ArgumentException(_IPv4OnlySupport, nameof(multicastAddr));
+                throw new ArgumentException(_IPv4OnlySupport);
             }
 
             MulticastOption mcOpt = new MulticastOption(multicastAddr);
@@ -401,8 +408,8 @@ namespace System.Net.Sockets
         /// This is only recommended on multi-homed systems
         /// </summary>
         /// <param name="localAddress">IP address of the interface used to send multicast packets</param>
-        /// <exception cref="ArgumentNullException"></exception>
-        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="ArgumentNullException"><paramref name="localAddress"/> is null.</exception>
+        /// <exception cref="ArgumentException"><paramref name="localAddress"/> isn't an IPv4 address.</exception>
         /// <exception cref="SocketException">Error on the underlying socket.</exception>
         public void SetMulticastInterface(IPAddress localAddress)
         {
@@ -410,11 +417,11 @@ namespace System.Net.Sockets
 
             if (localAddress is null)
             {
-                throw new ArgumentNullException(nameof(localAddress));
+                throw new ArgumentNullException();
             }
             if (localAddress.AddressFamily != _family)
             {
-                throw new ArgumentException(_IPv4OnlySupport, nameof(localAddress));
+                throw new ArgumentException(_IPv4OnlySupport);
             }
 
             _clientSocket.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.MulticastInterface, localAddress.GetAddressBytes());
@@ -437,7 +444,7 @@ namespace System.Net.Sockets
         {
             if (_disposed)
             {
-                throw new ObjectDisposedException(nameof(UdpClient));
+                throw new ObjectDisposedException();
             }
         }
     }
