@@ -15,9 +15,9 @@
     <RootNamespace>System.Net.Sockets.UdpClient</RootNamespace>
     <AssemblyName>System.Net.Sockets.UdpClient</AssemblyName>
     <TargetFrameworkVersion>v1.0</TargetFrameworkVersion>
-	  <DocumentationFile>bin\$(Configuration)\System.Net.Sockets.UdpClient.xml</DocumentationFile>
+    <DocumentationFile>bin\$(Configuration)\System.Net.Sockets.UdpClient.xml</DocumentationFile>
   </PropertyGroup>
-    <PropertyGroup>
+  <PropertyGroup>
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
@@ -43,13 +43,13 @@
       <HintPath>..\packages\nanoFramework.Runtime.Events.1.10.0-preview.6\lib\nanoFramework.Runtime.Events.dll</HintPath>
     </Reference>
     <Reference Include="nanoFramework.System.Text">
-      <HintPath>..\packages\nanoFramework.System.Text.1.1.3-preview.11\lib\nanoFramework.System.Text.dll</HintPath>
+      <HintPath>..\packages\nanoFramework.System.Text.1.1.3-preview.13\lib\nanoFramework.System.Text.dll</HintPath>
     </Reference>
     <Reference Include="System.Net">
-      <HintPath>..\packages\nanoFramework.System.Net.1.8.0-preview.19\lib\System.Net.dll</HintPath>
+      <HintPath>..\packages\nanoFramework.System.Net.1.8.0-preview.26\lib\System.Net.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading">
-      <HintPath>..\packages\nanoFramework.System.Threading.1.0.4-preview.12\lib\System.Threading.dll</HintPath>
+      <HintPath>..\packages\nanoFramework.System.Threading.1.0.4-preview.14\lib\System.Threading.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets')" />
