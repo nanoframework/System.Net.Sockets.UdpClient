@@ -12,10 +12,17 @@ namespace System.Net.Sockets
     /// Provides User Datagram Protocol (UDP) network services. Can be used for both client and server roles.
     /// </summary>
     /// <remarks>
+    /// <para>
     /// For the Receive methods if the buffer is smaller than the packet to receive it will be truncated to
     /// the buffer size without warning. Indeed "lwIP", the TCP/IP stack used commonly by RTOS, doesn't
     /// support the MSG_TRUNC socket option in calls to recvfrom to return the real length of the datagram
     /// when it is longer than the passed buffer opposite to common Un*x implementations.
+    /// </para>
+    /// <para>
+    /// <see cref="UdpClient(string, int)"/> and <code>Connect</code> methods establish a default remote host.
+    /// Once established, you do not have to specify a remote host in each call to the <code>Send</code> methods.
+    /// Additionally, once a remote host is established the datagram received from other hosts will be discarded.
+    /// </para>
     /// </remarks>
     public class UdpClient : IDisposable
     {
@@ -78,6 +85,27 @@ namespace System.Net.Sockets
 
             _clientSocket = new Socket(_family, SocketType.Dgram, ProtocolType.Udp);
             _clientSocket.Bind(localEP);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the UdpClient class and establishes a default remote host.
+        /// </summary>
+        /// <param name="hostname">The name of the remote DNS host to which you intend to connect.</param>
+        /// <param name="port">The remote port number to which you intend to connect.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="hostname"/> is null</exception>
+        /// <remarks>
+        /// This constructor initializes a new <see cref="UdpClient"/> and establishes a remote host using the 
+        /// hostname and port parameters. 
+        /// </remarks>
+        public UdpClient(string hostname,int port)
+        {
+            if (hostname is null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            _clientSocket = new Socket(_family, SocketType.Dgram, ProtocolType.Udp);
+            Connect(hostname, port);
         }
 
         /// <summary>
@@ -180,7 +208,8 @@ namespace System.Net.Sockets
             }
 
             IPEndPoint endPoint = new IPEndPoint(addr ?? throw new ArgumentNullException(), port);
-            Connect(endPoint);
+            Client.Connect(endPoint);
+            Active = true;
         }
 
         /// <summary>
@@ -195,6 +224,45 @@ namespace System.Net.Sockets
             ThrowIfDisposed();
 
             Client.Connect(endPoint ?? throw new ArgumentNullException());
+            Active = true;
+        }
+
+        /// <summary>
+        /// Establishes a default remote host using the specified IP address and port number.
+        /// </summary>
+        /// <param name="hostname"></param>
+        /// <param name="port"></param>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="port"/> is not between 0 and 65535</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="hostname"/> is null</exception>
+        /// <exception cref="ArgumentException"><paramref name="hostname"/> is not resolvable to an IPv4 address</exception>
+        /// <exception cref="ObjectDisposedException"><see cref="UdpClient"/> is already disposed.</exception>
+        /// <exception cref="SocketException">Error on the underlying socket.</exception>
+        /// <remarks>
+        /// The Connect method establishes a default remote host using the values specified in the port and hostname parameters.
+        /// Once established, you do not have to specify a remote host in each call to the <see cref="Send(byte[])"/> method.
+        /// </remarks>
+        public void Connect(string hostname, int port)
+        {
+            ThrowIfDisposed();
+
+            if (hostname is null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            if (port < 0 || port > ushort.MaxValue)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            IPHostEntry hostEntry = Dns.GetHostEntry(hostname);
+            if (hostEntry?.AddressList is null)
+            {
+                throw new ArgumentException();
+            }
+
+            // we only return IPv4 in DNS
+            Client.Connect(new IPEndPoint(hostEntry.AddressList[0], port));
             Active = true;
         }
 
