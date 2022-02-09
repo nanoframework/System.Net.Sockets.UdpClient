@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
-    <id>nanoframework.System.Net.Sockets.UdpClient</id>
+    <id>nanoFramework.System.Net.Sockets.UdpClient</id>
     <version>$version$</version>
-    <title>nanoframework.System.Net.Sockets.UdpClient</title>
+    <title>nanoFramework.System.Net.Sockets.UdpClient</title>
     <authors>nanoFramework project contributors</authors>
     <owners>nanoframework,dotnetfoundation</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -16,8 +16,8 @@
     <icon>images\nf-logo.png</icon>
     <repository type="git" url="https://github.com/nanoframework/System.Net.Sockets.UdpClient" commit="$commit$" />
     <copyright>Copyright (c) .NET Foundation and Contributors</copyright>
-    <description>This package includes the nanoframework.System.Net.Sockets.UdpClient assembly for nanoFramework C# projects.</description>
-    <tags>nanoFramework C# csharp netmf netnf nanoframework.System.Net.Sockets.UdpClient</tags>
+    <description>This package includes the .NET nanoFramework System.Net.Sockets.UdpClient assembly for nanoFramework C# projects.</description>
+    <tags>nanoFramework C# csharp netmf netnf UdpClient</tags>
     <dependencies>
       <dependency id="nanoFramework.CoreLibrary" version="1.12.0-preview.5" />
       <dependency id="nanoFramework.Runtime.Events" version="1.10.0-preview.6" />
