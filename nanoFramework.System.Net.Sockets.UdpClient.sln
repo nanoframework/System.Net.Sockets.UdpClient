@@ -5,11 +5,11 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0A938C8B-5134-4557-8E2D-C74E47187252}"
 	ProjectSection(SolutionItems) = preProject
-		nanoframework.System.Net.Sockets.UdpClient.nuspec = nanoframework.System.Net.Sockets.UdpClient.nuspec
+		nanoframework.System.Net.Sockets.UdpClient.nuspec = nanoFramework.System.Net.Sockets.UdpClient.nuspec
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "nanoFramework.System.Net.Sockets.UdpClient", "nanoframework.System.Net.Sockets.UdpClient\nanoFramework.System.Net.Sockets.UdpClient.nfproj", "{70D1D03C-8F65-44B8-8759-0AD9EA966AF1}"
+Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "nanoFramework.System.Net.Sockets.UdpClient", "nanoFramework.System.Net.Sockets.UdpClient\nanoFramework.System.Net.Sockets.UdpClient.nfproj", "{70D1D03C-8F65-44B8-8759-0AD9EA966AF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

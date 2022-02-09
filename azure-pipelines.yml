@@ -40,10 +40,10 @@ pool:
 
 variables:
   DOTNET_NOLOGO: true
-  solution: 'nanoframework.System.Net.Sockets.UdpClient.sln'
+  solution: 'nanoFramework.System.Net.Sockets.UdpClient.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  nugetPackageName: 'nanoframework.System.Net.Sockets.UdpClient'
+  nugetPackageName: 'nanoFramework.System.Net.Sockets.UdpClient'
 
 steps:
 
