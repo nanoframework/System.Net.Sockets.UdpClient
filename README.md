@@ -4,9 +4,9 @@
 
 -----
 
-# System.NET.Sockets.UdpClient
+# System.Net.Sockets.UdpClient
 
-This API implements the UdpClient class with a pattern similar to the official .NET equivalent [System.NET.Sockets.UdpClient](https://docs.microsoft.com/en-us/dotnet/api/system.net.sockets.udpclient). Beside the lack of the asynchronous methods the receive functions don't use an internal buffer like the .NET API but instead requires a buffer to be passed as part of the call.
+This API implements the UdpClient class with a pattern similar to the official .NET equivalent [System.Net.Sockets.UdpClient](https://docs.microsoft.com/en-us/dotnet/api/system.net.sockets.udpclient). Beside the lack of the asynchronous methods the receive functions don't use an internal buffer like the .NET API but instead requires a buffer to be passed as part of the call.
 
 ***Note:*** *For the `Receive` methods if the buffer is smaller than the packet to receive it will be truncated to the buffer size without warning. Indeed "lwIP", the TCP/IP stack used commonly by RTOS, doesn't support the `MSG_TRUNC` socket option in calls to `recvfrom` to return the real length of the datagram when it is longer than the passed buffer opposite to common Un\*x implementations.*
 
