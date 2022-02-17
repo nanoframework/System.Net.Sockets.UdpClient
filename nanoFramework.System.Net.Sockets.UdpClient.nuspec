@@ -4,8 +4,7 @@
     <id>nanoFramework.System.Net.Sockets.UdpClient</id>
     <version>$version$</version>
     <title>nanoFramework.System.Net.Sockets.UdpClient</title>
-    <authors>nanoFramework project contributors</authors>
-    <owners>nanoframework,dotnetfoundation</owners>
+    <authors>nanoframework</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="file">LICENSE.md</license>
     <releaseNotes>
@@ -16,8 +15,8 @@
     <icon>images\nf-logo.png</icon>
     <repository type="git" url="https://github.com/nanoframework/System.Net.Sockets.UdpClient" commit="$commit$" />
     <copyright>Copyright (c) .NET Foundation and Contributors</copyright>
-    <description>This package includes the .NET nanoFramework System.Net.Sockets.UdpClient assembly for nanoFramework C# projects.</description>
-    <tags>nanoFramework C# csharp netmf netnf UdpClient</tags>
+    <description>This package includes the System.Net.Sockets.UdpClient assembly for .NET nanoFramework C# projects.</description>
+    <tags>nanoFramework C# csharp netmf netnf Udp</tags>
     <dependencies>
       <dependency id="nanoFramework.CoreLibrary" version="1.12.0-preview.5" />
       <dependency id="nanoFramework.Runtime.Events" version="1.10.0-preview.6" />
