@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>nanoFramework.System.Net.Sockets.UdpClient</id>
+    <version>$version$</version>
+    <title>nanoFramework.System.Net.Sockets.UdpClient</title>
+    <authors>nanoframework</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="file">LICENSE.md</license>
+    <releaseNotes>
+    </releaseNotes>
+    <readme>docs\README.md</readme>
+    <developmentDependency>false</developmentDependency>
+    <projectUrl>https://github.com/nanoframework/System.Net.Sockets.UdpClient</projectUrl>
+    <icon>images\nf-logo.png</icon>
+    <repository type="git" url="https://github.com/nanoframework/System.Net.Sockets.UdpClient" commit="$commit$" />
+    <copyright>Copyright (c) .NET Foundation and Contributors</copyright>
+    <description>This package includes the System.Net.Sockets.UdpClient assembly for .NET nanoFramework C# projects.</description>
+    <tags>nanoFramework C# csharp netmf netnf Udp</tags>
+    <dependencies>
+      <dependency id="nanoFramework.CoreLibrary" version="1.12.0" />
+      <dependency id="nanoFramework.System.Net" version="1.8.1" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="nanoframework.System.Net.Sockets.UdpClient\bin\Release\System.Net.Sockets.UdpClient.dll" target="lib\System.Net.Sockets.UdpClient.dll" />
+    <file src="nanoframework.System.Net.Sockets.UdpClient\bin\Release\System.Net.Sockets.UdpClient.pdb" target="lib\System.Net.Sockets.UdpClient.pdb" />
+    <file src="nanoframework.System.Net.Sockets.UdpClient\bin\Release\System.Net.Sockets.UdpClient.pdbx" target="lib\System.Net.Sockets.UdpClient.pdbx" />
+    <file src="nanoframework.System.Net.Sockets.UdpClient\bin\Release\System.Net.Sockets.UdpClient.pe" target="lib\System.Net.Sockets.UdpClient.pe" />
+    <file src="nanoframework.System.Net.Sockets.UdpClient\bin\Release\System.Net.Sockets.UdpClient.xml" target="lib\System.Net.Sockets.UdpClient.xml" />
+    <file src="assets\readme.txt" target="" />
+    <file src="README.md" target="docs\" />
+    <file src="assets\nf-logo.png" target="images\" />
+    <file src="LICENSE.md" target="" />
+  </files>
+</package>
