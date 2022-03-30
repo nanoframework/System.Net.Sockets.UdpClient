@@ -15,7 +15,6 @@ This API implements the UdpClient class with a pattern similar to the official .
 | Component | Build Status | NuGet Package |
 |:-|---|---|
 | nanoFramework.System.Net.Sockets.UdpClient | [![Build Status](https://dev.azure.com/nanoframework/System.Net.Sockets.UdpClient/_apis/build/status/nanoframework.System.Net.Sockets.UdpClient?repoName=nanoframework%2FSystem.Net.Sockets.UdpClient&branchName=main)](https://dev.azure.com/nanoframework/System.Net.Sockets.UdpClient/_build/latest?definitionId=92&repoName=nanoframework%2FSystem.Net.Sockets.UdpClient&branchName=main) | [![NuGet](https://img.shields.io/nuget/v/nanoFramework.System.Net.Sockets.UdpClient.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/nanoFramework.System.Net.Sockets.UdpClient/) |
-| nanoFramework.System.Net.Sockets.UdpClient (preview) | [![Build Status](https://dev.azure.com/nanoframework/System.Net.Sockets.UdpClient/_apis/build/status/nanoframework.System.Net.Sockets.UdpClient?repoName=nanoframework%2FSystem.Net.Sockets.UdpClient&branchName=develop)](https://dev.azure.com/nanoframework/System.Net.Sockets.UdpClient/_build/latest?definitionId=92&repoName=nanoframework%2FSystem.Net.Sockets.UdpClient&branchName=develop) | [![NuGet](https://img.shields.io/nuget/vpre/nanoFramework.System.Net.Sockets.UdpClient.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/nanoFramework.System.Net.Sockets.UdpClient/) |
 
 ## Usage
 
