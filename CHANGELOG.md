@@ -6,6 +6,7 @@
 
 **Documentation and other chores:**
 
+- Update 1 NuGet dependencies [\#11](https://github.com/nanoframework/System.Net.Sockets.UdpClient/pull/11)
 - Update 1 NuGet dependencies [\#10](https://github.com/nanoframework/System.Net.Sockets.UdpClient/pull/10)
 
 ## [v1.0.0](https://github.com/nanoframework/System.Net.Sockets.UdpClient/tree/v1.0.0) (2022-03-29)
