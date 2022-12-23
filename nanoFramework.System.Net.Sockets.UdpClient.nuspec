@@ -18,7 +18,7 @@
     <description>This package includes the System.Net.Sockets.UdpClient assembly for .NET nanoFramework C# projects.</description>
     <tags>nanoFramework C# csharp netmf netnf Udp</tags>
     <dependencies>
-      <dependency id="nanoFramework.CoreLibrary" version="1.12.0" />
+      <dependency id="nanoFramework.CoreLibrary" version="1.14.2" />
       <dependency id="nanoFramework.System.Net" version="1.10.38" />
     </dependencies>
   </metadata>
