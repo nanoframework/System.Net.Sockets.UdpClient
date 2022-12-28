@@ -2,7 +2,15 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/System.Net.Sockets.UdpClient/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/System.Net.Sockets.UdpClient/compare/v1.1.37...HEAD)
+[Full Changelog](https://github.com/nanoframework/System.Net.Sockets.UdpClient/compare/v1.1.39...HEAD)
+
+**Documentation and other chores:**
+
+- Update 3 NuGet dependencies [\#39](https://github.com/nanoframework/System.Net.Sockets.UdpClient/pull/39)
+
+## [v1.1.39](https://github.com/nanoframework/System.Net.Sockets.UdpClient/tree/v1.1.39) (2022-12-27)
+
+[Full Changelog](https://github.com/nanoframework/System.Net.Sockets.UdpClient/compare/v1.1.37...v1.1.39)
 
 **Documentation and other chores:**
 
