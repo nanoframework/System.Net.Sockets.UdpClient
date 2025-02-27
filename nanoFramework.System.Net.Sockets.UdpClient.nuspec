@@ -19,7 +19,7 @@
     <tags>nanoFramework C# csharp netmf netnf Udp</tags>
     <dependencies>
       <dependency id="nanoFramework.CoreLibrary" version="1.17.1" />
-      <dependency id="nanoFramework.System.Net" version="1.11.31" />
+      <dependency id="nanoFramework.System.Net" version="1.11.32" />
     </dependencies>
   </metadata>
   <files>
