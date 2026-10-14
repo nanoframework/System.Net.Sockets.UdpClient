@@ -18,6 +18,10 @@ This API implements the UdpClient class with a pattern similar to the official .
 
 ## Usage
 
+The v2 preview packages require compatible .NET nanoFramework v2 firmware and
+preview dependencies. Use the preview nanoFramework build tools when building
+this branch.
+
 **Important:** Obviously UdpClient requires a working network connection with a valid IP address. Please check the examples with the Network Helpers on how to connect to a network.
 
 The UdpClient class provides simple methods for sending and receiving UDP datagrams on an IP network. The current implementation supports only IPv4. IPv6 isn't supported on nanoFramework currently.
