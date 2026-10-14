@@ -1,0 +1,20 @@
+# Copyright (c) .NET Foundation and Contributors
+# See LICENSE file in the project root for full license information.
+
+name: Daily update develop dependencies
+
+on:
+  schedule:
+  - cron: '20 00 * * Tue,Thu'
+  repository_dispatch:
+    types: update-dependencies-develop
+
+jobs:
+  update-dependencies:
+    name: nanoFramework
+    uses: nanoframework/nf-tools/.github/workflows/update-dependencies.yml@main
+    secrets: inherit
+    with:
+      solutionsToCheck: 'nanoFramework.System.Net.Sockets.UdpClient.sln'
+      previewPackages: true
+      branchToPr: develop
